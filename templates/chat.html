@@ -2,8 +2,17 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
     {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <p>CHAT IS HERE</p>
+        Hi {{ user.username }}!  <a href="{% url 'logout' %}">Log Out</a><br>
+
+        {% for a in messages %}
+            <a>{{a.message_author}}({{a.message_time}}): {{a.message_text}}</a><br>
+        {% endfor %}
+
+        <form action="" method="post">{% csrf_token %}
+            {{ form }}
+            <input type="submit" class="send" value="Submit">
+        </form>
+
     {% else %}
         <p>CHAT IS HERE BUT You are not logged in</p>
         <a href="{% url 'login' %}">Log In</a> |
