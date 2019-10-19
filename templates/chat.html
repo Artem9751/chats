@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
     {% if user.is_authenticated %}
-        Hi {{ user.username }}!  <a href="{% url 'logout' %}">Log Out</a><br>
+        Hi {{ user.username }}!  <a href="{% url 'logout' %}">Log Out</a> <a href="{% url 'home' %}">Start Page</a><br>
 
         {% for a in messages %}
             <a>{{a.message_author}}({{a.message_time}}): {{a.message_text}}</a><br>

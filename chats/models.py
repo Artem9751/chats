@@ -7,3 +7,10 @@ class Message(models.Model):
     message_text = models.TextField()
     message_time = models.DateTimeField()
 
+
+class Chat(models.Model):
+    Chat_author = models.ForeignKey(CustomUser, related_name='chat_author_set', on_delete=models.CASCADE)
+    Chat_users = models.ManyToManyField(CustomUser)
+    Chat_name = models.CharField(max_length=30)
+
+

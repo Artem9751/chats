@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Create Chat{% endblock title %}
+{% block content %}
+    {% for user in adduserlist %}
+        <a>{{ user.username }}</a><br>
+    {% endfor %}
+
+    <form action="" method="post">{% csrf_token %}
+        {{ chatform.as_p }}
+        <input type="submit" class="send" value="Submit">
+    </form>
+{% endblock content %}
